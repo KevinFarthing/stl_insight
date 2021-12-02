@@ -38,16 +38,6 @@ defmodule StlInsightTest do
     assert parsed_stl.area == 7.7726
   end
 
-  test "facet area" do
-    facet = %StlInsight.Ascii.Facet{
-      v1: %StlInsight.Ascii.Vertex{x: 0.360463, y: 0, z: 2.525},
-      v2: %StlInsight.Ascii.Vertex{x: 0, y: 0, z: 2.98309},
-      v3: %StlInsight.Ascii.Vertex{x: 0.360463, y: 0.2, z: 2.525}
-    }
-
-    assert Facet.area(facet) == 0.0583
-  end
-
   #   test "create facet"
 
   #   test "create facet with multiple loops"
@@ -71,5 +61,15 @@ defmodule StlInsightTest do
     }
 
     assert Facet.area(facet1) + Facet.area(facet2) == @sample_stl_area
+  end
+
+  test "facet area calculation advanced" do
+    facet = %StlInsight.Ascii.Facet{
+      v1: %StlInsight.Ascii.Vertex{x: 0.360463, y: 0, z: 2.525},
+      v2: %StlInsight.Ascii.Vertex{x: 0, y: 0, z: 2.98309},
+      v3: %StlInsight.Ascii.Vertex{x: 0.360463, y: 0.2, z: 2.525}
+    }
+
+    assert Facet.area(facet) == 0.0583
   end
 end

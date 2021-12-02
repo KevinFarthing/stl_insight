@@ -13,12 +13,14 @@ defmodule StlInsight.Ascii.Solid do
 
     Enum.reduce(data, %Solid{}, fn [facet], solid ->
       facets = Facet.new(facet)
-      facets_area = Enum.reduce(facets, 0, fn facet, area -> area + Facet.area(facet) end)
+
+      facets_area =
+        Enum.reduce(facets, 0, fn facet, area -> Float.round(area + Facet.area(facet), 4) end)
 
       %Solid{
         facets: solid.facets ++ facets,
         triangles_count: solid.triangles_count + (facets |> length),
-        area: solid.area + facets_area
+        area: Float.round(solid.area + facets_area, 4)
       }
     end)
   end

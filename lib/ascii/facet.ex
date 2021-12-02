@@ -26,12 +26,16 @@ defmodule StlInsight.Ascii.Facet do
 
   def area(%Facet{v1: v1, v2: v2, v3: v3}) do
     # https://www.youtube.com/watch?v=MnpaeFPyn1A
+    # calculate vectors
+    # find cross product
+    # find magnitude
+
     vector1_2 = %{x: v2.x - v1.x, y: v2.y - v1.y, z: v2.z - v1.z}
     vector1_3 = %{x: v3.x - v1.x, y: v3.y - v1.y, z: v3.z - v1.z}
 
-    determinant1 = vector1_2.y * vector1_2.y - vector1_2.z * vector1_3.y
-    determinant2 = vector1_2.x * vector1_2.x - vector1_2.z * vector1_3.x
-    determinant3 = vector1_2.x * vector1_2.x - vector1_2.y * vector1_3.x
+    determinant1 = vector1_2.y * vector1_3.z - vector1_2.z * vector1_3.y
+    determinant2 = vector1_2.x * vector1_3.z - vector1_2.z * vector1_3.x
+    determinant3 = vector1_2.x * vector1_3.y - vector1_2.y * vector1_3.x
 
     {determinant1, determinant2, determinant3}
     |> get_magnitude()
