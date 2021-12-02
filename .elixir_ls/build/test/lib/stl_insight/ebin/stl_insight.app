@@ -1,0 +1,9 @@
+{application,stl_insight,
+             [{applications,[kernel,stdlib,elixir,logger]},
+              {description,"stl_insight"},
+              {modules,['Elixir.StlInsight','Elixir.StlInsight.Ascii.Facet',
+                        'Elixir.StlInsight.Ascii.Loop',
+                        'Elixir.StlInsight.Ascii.Solid',
+                        'Elixir.StlInsight.Ascii.Vertex']},
+              {registered,[]},
+              {vsn,"0.1.0"}]}.
