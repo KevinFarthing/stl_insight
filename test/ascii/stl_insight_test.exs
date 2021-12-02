@@ -38,10 +38,6 @@ defmodule StlInsightTest do
     assert parsed_stl.area == 7.7726
   end
 
-  #   test "create facet"
-
-  #   test "create facet with multiple loops"
-
   test "create vertex" do
     v = Vertex.new("\n            vertex 0 1 2\n")
     assert v == {:ok, %Vertex{x: 0, y: 1, z: 2}}
@@ -60,7 +56,17 @@ defmodule StlInsightTest do
       v3: %Vertex{x: 1, y: 1, z: 1}
     }
 
-    assert Facet.area(facet1) + Facet.area(facet2) == @sample_stl_area
+    assert Float.round(Facet.area(facet1) + Facet.area(facet2), 4) == @sample_stl_area
+  end
+
+  test "facet area calculation youtube" do
+    facet = %StlInsight.Ascii.Facet{
+      v1: %StlInsight.Ascii.Vertex{x: -5, y: 5, z: -5},
+      v2: %StlInsight.Ascii.Vertex{x: 1, y: -6, z: 6},
+      v3: %StlInsight.Ascii.Vertex{x: 2, y: -3, z: 4}
+    }
+
+    assert Facet.area(facet) |> Float.round(4) == 19.3067
   end
 
   test "facet area calculation advanced" do
@@ -70,6 +76,10 @@ defmodule StlInsightTest do
       v3: %StlInsight.Ascii.Vertex{x: 0.360463, y: 0.2, z: 2.525}
     }
 
-    assert Facet.area(facet) == 0.0583
+    assert Facet.area(facet) |> Float.round(4) == 0.0583
   end
+
+  #   test "examine" do
+  #     StlInsight.examine("moon.stl")
+  #   end
 end

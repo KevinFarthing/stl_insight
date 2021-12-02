@@ -19,6 +19,8 @@ defmodule StlInsight do
     solid =
       File.read!("priv/images/#{filename}")
       |> parse_stl
+
+    IO.puts("Number of Triangles: #{solid.triangles_count}\nSurface Area: #{solid.area}")
   end
 
   def parse_stl(stl) do

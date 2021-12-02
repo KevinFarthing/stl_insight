@@ -40,7 +40,11 @@ defmodule StlInsight.Ascii.Facet do
     {determinant1, determinant2, determinant3}
     |> get_magnitude()
     |> Kernel./(2)
-    |> Float.round(4)
+
+    # rounding at this step removed
+    # rounding should always be done after all calculations have been complete
+    # ie upon final solid struct, or after measuring area of the set of facets
+    # |> Float.round(4)
   end
 
   defp get_magnitude({d1, d2, d3}) do

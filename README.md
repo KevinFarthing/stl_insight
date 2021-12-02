@@ -1,11 +1,8 @@
 # StlInsight
 
-**TODO: Add description**
+StlInsight is a tool to parse stl files and determine the complixity of the model
 
 ## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `stl_insight` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -15,7 +12,23 @@ def deps do
 end
 ```
 
+## Usage
+
+.stl files should be saved to the `priv/images` folder
+Once there, start the application with `iex -S mix`
+and run
+
+```
+iex> StlInsight.examine("moon.stl")
+```
+
+Which will generate the area and the number of triangles as
+
+```
+Number of Triangles: 116
+Surface Area: 7.7726
+```
+
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/stl_insight](https://hexdocs.pm/stl_insight).
-
